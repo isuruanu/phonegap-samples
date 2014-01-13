@@ -1,7 +1,14 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
+function showAlert(title, message) {
+    if (navigator.notification) {
+        navigator.notification.alert(message, null, title, 'OK');
+    } else {
+        alert(title ? (title + ": " + message) : message);
+    }
+}
+
 function onDeviceReady() {
-    navigator.splashscreen.hide();
     bindSelect();
 }
 
@@ -96,7 +103,7 @@ function bindSelect() {
                     break;
             }
         }
-        $("select").append("<option value=\"" + key + "\">" + val + "</option>");
+        $(".languageSelect").append("<option value=\"" + key + "\">" + val + "</option>");
     }
 }
 
